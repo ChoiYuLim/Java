@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Quiz {
 
     public static void main(String[] args) {
-        Scanner sc = new java.util.Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
 
         try {
             int size = sc.nextInt();
@@ -14,6 +14,7 @@ public class Quiz {
                 System.out.println("0을 입력했으므로 종료합니다.");
                 return;
             }
+            
             // 버퍼 비우기
             sc.nextLine();
 
