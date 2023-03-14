@@ -11,6 +11,20 @@ public class Cleric {
     final static int MAX_MP = 10;
     int mp = MAX_MP;
 
+    Cleric(String name, int hp, int mp) {
+        this.name = name;
+        this.hp = hp;
+        this.mp = mp;
+    }
+
+    Cleric(String name, int hp) {
+        this(name, hp, MAX_MP);
+    }
+
+    Cleric(String name) {
+        this(name, MAX_HP, MAX_MP);
+    }
+
     Random random = new Random();
 
     void selfAid() {
