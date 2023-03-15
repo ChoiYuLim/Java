@@ -1,26 +1,7 @@
 package com.yulim.day_0315.Problem12;
 
-public class TangibleAsset {
-    private String name;
-    private int price;
-    private String color;
-
+public class TangibleAsset extends Asset {
     public TangibleAsset(String name, int price, String color) {
-        this.name = name;
-        this.price = price;
-        this.color = color;
+        super(name, price, color);
     }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public String getColor() {
-        return color;
-    }
-
 }
