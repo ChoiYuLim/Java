@@ -1,6 +1,6 @@
 package com.yulim.day_0315.Example12;
 
-public class Dancer extends Character implements Human, Job { // dancer는 character야, dancer는 human이야
+public class Dancer extends Character implements Human, Worker { // dancer는 character야, dancer는 human이야, dancer는 worker야
 
 	public Dancer(String name) {
 		super(name);
