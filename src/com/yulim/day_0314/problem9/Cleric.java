@@ -1,4 +1,4 @@
-package com.yulim.day_0314.problem;
+package com.yulim.day_0314.problem9;
 
 import java.util.Random;
 
