@@ -1,6 +1,6 @@
 package com.yulim.day_0315.Problem12;
 
-public class Asset {
+public abstract class Asset {
     private String name;
     private int price;
     private String color;
