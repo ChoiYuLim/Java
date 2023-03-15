@@ -3,6 +3,10 @@ package com.yulim.day_0315.Example11;
 // Hero 클래스를 상속한 SuperHero
 public class SuperHero extends Hero {
 
+	public SuperHero() {
+		System.out.println("Super Hero 생성자");
+	}
+
 	private boolean flying; // 추가한 필드
 
 	// 추가한 메소드

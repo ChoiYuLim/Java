@@ -3,6 +3,11 @@ package com.yulim.day_0315.Example11;
 // 싸우기와 도망만 되는 Hero 클래스
 
 public class Hero {
+
+	public Hero() {
+		System.out.println("Hero 생성자");
+	}
+
 	private String name = "최유림";
 	private int hp = 100;
 
