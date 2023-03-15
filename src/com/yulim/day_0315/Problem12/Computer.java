@@ -7,9 +7,9 @@ public class Computer extends TangibleAsset {
         super(name, price, color);
         this.makerName = makerName;
     }
-
+    
     public String getMakerName() {
         return makerName;
     }
-
+    
 }
