@@ -6,11 +6,21 @@ public class Hero {
 	private String name = "최유림";
 	private int hp = 100;
 
+	public String getName() {
+		return name;
+	}
+
 	// 싸우기
 	public void attack(Kinoko enemy) {
 		System.out.println(this.name + "의 공격!");
 		this.hp -= 5;
 		System.out.println("5포인트의 데미지를 주었다!");
+	}
+
+	public final void slip() {
+		hp -= 5;
+		System.out.println(name + "는 미끄러졌다!");
+		System.out.println("5의 데미지!");
 	}
 
 	// 도망
