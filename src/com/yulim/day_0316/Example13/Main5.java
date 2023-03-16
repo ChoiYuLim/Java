@@ -1,5 +1,7 @@
 package com.yulim.day_0316.Example13;
 
+// 몬스터로 퉁치면, Slime, Kinoko, Monster를 받았을 때 각각 오버라이드해서 재정의한 run으로 실행
+
 public class Main5 {
 
     public static void main(String[] args) {
