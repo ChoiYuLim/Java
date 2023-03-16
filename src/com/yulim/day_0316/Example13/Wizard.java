@@ -8,10 +8,10 @@ public class Wizard extends Character {
     int mp;
 
     @Override
-    public void attack(Kinoko kinoko) {
+    public void attack(Monster monster) {
         System.out.println(this.name + "의 공격!");
         System.out.println("적에게 3포인트의 데미지");
-        kinoko.setHp(kinoko.getHp() - 3);
+        monster.setHp(monster.getHp() - 3);
     }
 
     public void fireball(Kinoko kinoko) {

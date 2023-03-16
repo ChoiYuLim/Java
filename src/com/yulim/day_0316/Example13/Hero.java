@@ -1,6 +1,6 @@
 package com.yulim.day_0316.Example13;
 
-public class Hero extends Character{
+public class Hero extends Character {
     String name;
     int hp = 50;
 
@@ -21,11 +21,13 @@ public class Hero extends Character{
     }
 
     @Override
-    public void attack(Kinoko kinoko) {
-        // TODO Auto-generated method stub
-        
+    public void attack(Monster monster) {
+        System.out.println(this.name + "의 공격!");
+        System.out.println("적에게 10포인트의 데미지를 주었다!");
+        monster.setHp(monster.getHp() - 10);
+
     }
-    
-    
+
+
 
 }
