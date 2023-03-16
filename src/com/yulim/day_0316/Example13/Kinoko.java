@@ -1,6 +1,6 @@
 package com.yulim.day_0316.Example13;
 
-public class Kinoko {
+public class Kinoko extends Monster {
     public Kinoko() {
         super();
     }
@@ -25,5 +25,10 @@ public class Kinoko {
         System.out.println("키노코 " + this.suffix + " 의 공격");
         System.out.println("10의 데미지");
         hero.setHp(hero.getHp() - 10);
+    }
+    
+    @Override
+    public void run() {
+        System.out.println("Kinoko는 도망쳤다");
     }
 }
