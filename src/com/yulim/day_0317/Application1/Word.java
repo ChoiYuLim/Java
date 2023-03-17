@@ -8,7 +8,7 @@ public class Word {
     }
 
     public boolean isVowel(int i) {
-        return "aioue".contains(letters.substring(i, i + 1));
+        return "aioueAIOUE".contains(letters.substring(i, i + 1));
     }
 
     
