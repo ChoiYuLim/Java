@@ -11,11 +11,14 @@ public class Word {
         return "aioueAIOUE".contains(letters.substring(i, i + 1));
     }
 
-    
-    
+    public boolean isConstant(int i) {
+        return !isVowel(i);
+    }
+
     public static void main(String[] args) {
         Word w = new Word("ajik");
         System.out.println(w.isVowel(2));
+        System.out.println(w.isConstant(2));
     }
 }
 
