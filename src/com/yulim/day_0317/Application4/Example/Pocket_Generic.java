@@ -1,4 +1,4 @@
-package com.yulim.day_0317;
+package com.yulim.day_0317.Application4.Example;
 
 // 제네릭을 사용한 코드
 

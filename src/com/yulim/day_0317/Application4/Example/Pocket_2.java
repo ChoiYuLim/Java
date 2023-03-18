@@ -1,4 +1,4 @@
-package com.yulim.day_0317;
+package com.yulim.day_0317.Application4.Example;
 
 // 이용 가능한 타입에 제약을 추가한 클래스
 
