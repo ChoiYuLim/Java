@@ -11,6 +11,10 @@ public class Tree {
 		this.y = y;
 	}
 
+	Tree(int count) {
+		this.count = count;
+	}
+
 	public int getX() {
 		return x;
 	}
