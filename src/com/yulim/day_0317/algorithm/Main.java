@@ -4,12 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class 조용한곳찾기 {
+public class Main {
 
 	public static void main(String[] args) {
+
 		try (Scanner sc = new Scanner(System.in)) {
 			// 공사 현장 x좌표, y좌표, 소음크기 생성자
-			ConstructionArea constuctionArea = new ConstructionArea(sc.nextInt(), sc.nextInt(), sc.nextInt());
+			ConstructionArea constructionArea = new ConstructionArea(sc.nextInt(), sc.nextInt(), sc.nextInt());
 
 			// 나무 개수 받기
 			int count = sc.nextInt();
@@ -24,15 +25,13 @@ public class 조용한곳찾기 {
 			}
 
 			// 계산기 생성자로 만든 뒤 계산한 거리 값 받아오기
-			// 거리와 noise 비교해서 결과 출력
+			// Result.getResult로 결과값 받아와서
+			// Printer.print로 출력하기
 			for (int i = 0; i < count; i++) {
 				DistanceCalculator calc = new DistanceCalculator(trees.get(i).getX(), trees.get(i).getY(),
-						constuctionArea.getX(), constuctionArea.getY());
-				if (calc.getDistance() >= constuctionArea.getNoise()) {
-					System.out.println("silent");
-				} else {
-					System.out.println("noisy");
-				}
+						constructionArea.getX(), constructionArea.getY());
+
+				Printer.print(Result.getResult(calc, constructionArea));
 			}
 		}
 
