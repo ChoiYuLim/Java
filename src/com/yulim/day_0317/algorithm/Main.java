@@ -24,14 +24,15 @@ public class Main {
 				trees.add(tree);
 			}
 
-			// 계산기 생성자로 만든 뒤 계산한 거리 값 받아오기
+			// DistanceCalculator.getDistance로 거리 받아옴
 			// Result.getResult로 결과값 받아와서
 			// Printer.print로 출력하기
+			// DistanceCalculator와 Result, Printer은 모두 하나씩만 있어도 되기 때문에 static
 			for (int i = 0; i < count; i++) {
-				DistanceCalculator calc = new DistanceCalculator(trees.get(i).getX(), trees.get(i).getY(),
+				double distance = DistanceCalculator.getDistance(trees.get(i).getX(), trees.get(i).getY(),
 						constructionArea.getX(), constructionArea.getY());
 
-				Printer.print(Result.getResult(calc, constructionArea));
+				Printer.print(Result.getResult(distance, constructionArea));
 			}
 		}
 
