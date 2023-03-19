@@ -11,6 +11,10 @@ public class Word {
 		return "aioueAIOUE".contains(letters.substring(i, i + 1));
 	}
 
+	public boolean isConstant(int i) {
+		return !isVowel(i);
+	}
+
 	public static void main(String[] args) {
 		Word w = new Word("ajlk");
 		System.out.println(w.isVowel(0));
