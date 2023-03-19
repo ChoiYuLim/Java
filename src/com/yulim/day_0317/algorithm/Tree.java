@@ -4,15 +4,10 @@ public class Tree {
 
 	private int x;
 	private int y;
-	private int count;
 
 	Tree(int x, int y) {
 		this.x = x;
 		this.y = y;
-	}
-
-	Tree(int count) {
-		this.count = count;
 	}
 
 	public int getX() {
@@ -21,14 +16,6 @@ public class Tree {
 
 	public int getY() {
 		return y;
-	}
-
-	public int getCount() {
-		return count;
-	}
-
-	public void setCount(int count) {
-		this.count = count;
 	}
 
 }
