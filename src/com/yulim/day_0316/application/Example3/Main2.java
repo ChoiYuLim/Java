@@ -32,7 +32,7 @@ public class Main2 {
         students.add(new Student("강태근", 2));
         
 
-        Collections.sort(students); // 내가 만든 건 무슨 순서인지 모르기 때문에 오류남
+        //Collections.sort(students); // 내가 만든 건 무슨 순서인지 모르기 때문에 오류남
         System.out.println(students);
     }
 
