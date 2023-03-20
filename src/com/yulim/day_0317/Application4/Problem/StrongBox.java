@@ -2,49 +2,53 @@ package com.yulim.day_0317.Application4.Problem;
 
 public class StrongBox<E> {
 
-	private E thing;
-	private KeyType type;
-	private int count;
+    public static void main(String[] args) {
 
-	public StrongBox(KeyType type) {
-		this.type = type;
-		this.count = 0;
-	}
+        StrongBox sb = new StrongBox(KeyType.PADLOCK);
+        sb.put("돈");
 
-	public void put(E thing) {
-		this.thing = thing;
-	}
+        for (int i = 0; i < 1300; i++) {
+            System.out.println(sb.get());
+        }
+    }
 
-	public E get() {
-		count++;
-		if (count <= this.type.getValue()) {
-			return null;
-		} else {
-			return this.thing;
-		}
-	}
+    private E thing;
+    private KeyType type;
+    private int count;
 
-	enum KeyType {
-		PADLOCK(1024), BUTTON(10000), DIAL(30000), FINGER(1000000);
+    public StrongBox(KeyType type) {
+        this.type = type;
+        count = 0;
+    }
 
-		private final int value;
+    public E get() {
+        count++;
+        if (count <= type.getValue()) {
+            return null;
+        } else {
+            return thing;
+        }
+    }
 
-		KeyType(int value) {
-			this.value = value;
-		}
+    public void put(E thing) {
+        this.thing = thing;
+    }
 
-		public int getValue() {
-			return value;
-		}
+    enum KeyType {
+        PADLOCK(1024), BUTTON(10000), DIAL(30000), FINGER(1000000);
 
-	}
+        private final int value;
 
-	public static void main(String[] args) {
-		StrongBox sb = new StrongBox(KeyType.PADLOCK);
-		sb.put("money");
-		for (int i = 0; i < 2000; i++) {
-			System.out.println(sb.get());
-		}
+        KeyType(int value) {
+            this.value = value;
+        }
 
-	}
+        public int getValue() {
+            return value;
+        }
+
+    }
+
 }
+
+
