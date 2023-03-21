@@ -5,12 +5,11 @@ interface MyFunction {
 }
 
 public class Main2 {
-	public static int add(int x, int y) {
-		return x + y;
-	}
 
 	public static void main(String[] args) {
-		MyFunction func = Main2::add;
+		MyFunction func = (int x, int y) -> {
+			return x + y;
+		};
 
 		int result = func.call(3, 4);
 		System.out.println("3 + 4 = " + result);
