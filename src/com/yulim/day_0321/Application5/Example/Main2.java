@@ -1,9 +1,5 @@
 package com.yulim.day_0321.Application5.Example;
 
-interface MyFunction {
-	int call(int a, int b);
-}
-
 public class Main2 {
 
 	public static void main(String[] args) {
