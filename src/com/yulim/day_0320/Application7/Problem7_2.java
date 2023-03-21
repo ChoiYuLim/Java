@@ -27,6 +27,7 @@ class Department implements Serializable {
 	}
 }
 
+
 public class Problem7_2 {
 	public static void main(String[] args) throws IOException {
 		Employee employee = new Employee("홍길동", 41);
