@@ -1,0 +1,78 @@
+package com.yulim.day_0323.finalProject;
+
+
+public class Book {
+    private String name;
+    private int id;
+    private static int count = 0;
+    private String publishedDate;
+    private String author;
+    private boolean canBorrow = true;
+    private int currentOwnerId = -1;
+
+
+    public int getCurrentOwnerId() {
+        return currentOwnerId;
+    }
+
+    public void setCurrentOwnerId(int currentOwnerId) {
+        this.currentOwnerId = currentOwnerId;
+    }
+
+    public Book(String name, String publishedDate, String author) {
+        this.name = name;
+        this.publishedDate = publishedDate;
+        this.author = author;
+        this.id = count;
+        count++;
+    }
+
+    @Override
+    public String toString() {
+        return "Book [name=" + name + ", id=" + id + ", author=" + author + ", publishedDate="
+                + Util.formattedToString(publishedDate) + ", canBorrow=" + canBorrow
+                + ", currentOwnerId=" + currentOwnerId + "]";
+    }
+
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getPublishedDate() {
+        return publishedDate;
+    }
+
+    public void setPublishedDate(String publishedDate) {
+        this.publishedDate = publishedDate;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public boolean getCanBorrow() {
+        return canBorrow;
+    }
+
+    public void setCanBorrow(boolean canBorrow) {
+        this.canBorrow = canBorrow;
+    }
+
+}
