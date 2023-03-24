@@ -157,8 +157,8 @@ public class Library {
 
                 book.setCurrentOwnerId(memberId);
 
-                System.out.println("\n<대출 완료>\n" + member.getName() + "님이 " + book.getName()
-                        + "을 대출했습니다." + member.getHistory().size());
+                System.out.println(
+                        "\n<대출 완료>\n" + member.getName() + "님이 " + book.getName() + "을 대출했습니다.");
             } else {
                 System.out.println("<대출 실패, 대출 중인 도서입니다.>");
                 return;
