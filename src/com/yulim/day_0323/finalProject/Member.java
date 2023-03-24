@@ -21,7 +21,6 @@ public class Member {
         this.name = name;
         this.address = address;
         this.birth = birth;
-
         this.gender = gender;
         this.phone = phone;
         this.joinDate = Util.getToday();
@@ -37,9 +36,8 @@ public class Member {
 
     @Override
     public String toString() {
-        return "Member [name=" + name + ", id=" + id + ", joinDate=" + joinDate + ", address="
-                + address + ", birth=" + birth + ", gender=" + gender + ", phone=" + phone
-                + ", history=" + history + "]";
+        return "회원번호=" + id + ", 이름=" + name + ", 성별=" + gender + ", 생년월일=" + birth + ", 전화번호="
+                + phone + ", 주소=" + address + ", 가입날짜=" + joinDate + ", 대출 이력=" + history;
     }
 
 

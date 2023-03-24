@@ -7,6 +7,7 @@ public class MainSystem {
         SystemManager manager = new SystemManager();
         System.out.println("도서 대출 관리 프로그램");
         try {
+            
             manager.run();
         } catch (Exception e) {
             e.printStackTrace();

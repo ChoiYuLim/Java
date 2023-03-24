@@ -2,11 +2,11 @@ package com.yulim.day_0323.finalProject;
 
 
 public class Book {
-    private String name;
-    private int id;
     private static int count = 0;
-    private String publishedDate;
+    private int id;
+    private String name;
     private String author;
+    private String publishedDate;
     private boolean canBorrow = true;
     private int currentOwnerId = -1;
 
@@ -29,9 +29,8 @@ public class Book {
 
     @Override
     public String toString() {
-        return "Book [name=" + name + ", id=" + id + ", author=" + author + ", publishedDate="
-                + Util.formattedToString(publishedDate) + ", canBorrow=" + canBorrow
-                + ", currentOwnerId=" + currentOwnerId + "]";
+        return "책 번호=" + id + ", 책 이름=" + name + ", 저자=" + author + ", 출판년도=" + publishedDate
+                + ", 대출가능여부=" + canBorrow;
     }
 
 
