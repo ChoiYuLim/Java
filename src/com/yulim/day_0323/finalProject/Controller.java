@@ -1,6 +1,5 @@
 package com.yulim.day_0323.finalProject;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Controller {
@@ -70,11 +69,10 @@ public class Controller {
                     System.out.println("연락처를 입력해주세요.");
                     String phone = sc.next();
 
-                    mm.create(new Member(name, address, birth, gender, phone));
-                    System.out.println("\n<회원가입 완료>\n로그인 시 회원번호 "
-                            + mm.list.get(mm.list.size() - 1).getId() + "으로 입력해주세요.");
+                    int memberId = mm.create(new Member(name, address, birth, gender, phone));
+                    System.out.println("\n<회원가입 완료>\n로그인 시 회원번호 " + memberId + "으로 입력해주세요.");
 
-                    로그인();
+                    로그인(memberId);
                     break;
 
                 }
@@ -84,8 +82,8 @@ public class Controller {
                         System.out.println("\n<회원 로그인>\n회원번호를 입력하세요.");
                         int memberId = sc.nextInt();
                         if (isSuccessLogin(memberId)) {
-                            System.out.println("로그인 성공\n" + mm.list.get(memberId));
-                            로그인();
+                            System.out.println("로그인 성공\n" + mm.findMember(memberId).toString());
+                            로그인(memberId);
                             break;
                         } else {
                             System.out.println("<로그인 실패>");
@@ -274,52 +272,51 @@ public class Controller {
 
     public boolean isSuccessLogin(int id) {
         // 만약 아이디값이 있으면 성공
-        try {
-            mm.list.get(id);
+        if (mm.findMember(id) != null)
             return true;
-        } catch (Exception e) {
+        else
             return false;
-        }
+
     }
 
-    public void 로그인() {
-//        int option;
-//        while (true) {
-//            System.out.println("\n<" + this.member.getName()
-//                    + "님으로 로그인 상태>\n0. 로그아웃 1. 대출 가능한 책 조회 2. 현재 대출 중인 책 조회");
-//            option = sc.nextInt();
-//
-//            switch (option) {
-//                // 로그아웃
-//                case 0: {
-//                    break;
-//                }
-//                // 대출 가능한 책 조회
-//                case 1: {
-//                    System.out.println("\n<대출 가능한 책 조회>");
-//                    library.readBook();
-//                    borrowBook();
-//                    break;
-//                }
-//                // 현재 대출 중인 책 조회
-//                case 2: {
-//                    System.out.println("\n<현재 회원님이 대출 중인 책>");
-//                    library.getBookList().stream()
-//                            .filter(it -> it.getCurrentOwnerId() == this.member.getId())
-//                            .forEach(id -> System.out.println(id.toString()));
-//
-//                    returnBook();
-//                    break;
-//                }
-//                default: {
-//                    System.out.println("0~2 사이로 다시 입력해주세요");
-//                    continue;
-//                }
-//            }
-//            if (option == 0) {
-//                return;
-//            }
-//        }
+    public void 로그인(int id) {
+        int option;
+        while (true) {
+            System.out.println("\n<" + mm.findMember(id).getName()
+                    + "님으로 로그인 상태>\n0. 로그아웃 1. 대출 가능한 책 조회 2. 현재 대출 중인 책 조회");
+            option = sc.nextInt();
+
+            switch (option) {
+                // 로그아웃
+                case 0: {
+                    break;
+                }
+                // 대출 가능한 책 조회
+                case 1: {
+                    System.out.println("\n<대출 가능한 책 조회>");
+                    // library.readBook();
+                    borrowBook();
+                    break;
+                }
+                // 현재 대출 중인 책 조회
+                case 2: {
+                    System.out.println("\n<현재 회원님이 대출 중인 책>");
+                    // library.getBookList().stream()
+                    // .filter(it -> it.getCurrentOwnerId() == this.member.getId())
+                    // .forEach(id -> System.out.println(id.toString()));
+
+                    returnBook();
+                    break;
+                }
+                default: {
+                    System.out.println("0~2 사이로 다시 입력해주세요");
+                    continue;
+                }
+            }
+            if (option == 0) {
+                return;
+            }
+        }
     }
 
     public void borrowBook() {
