@@ -1,11 +1,13 @@
 package com.yulim.day_0323.finalProject;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Controller {
 
     BookManager bm = new BookManager();
     MemberManager mm = new MemberManager();
+    LoanManager lm = new LoanManager();
 
     Scanner sc = new Scanner(System.in);
 
@@ -72,7 +74,7 @@ public class Controller {
                     int memberId = mm.create(new Member(name, address, birth, gender, phone));
                     System.out.println("\n<회원가입 완료>\n로그인 시 회원번호 " + memberId + "으로 입력해주세요.");
 
-                    로그인(memberId);
+                    로그인(mm.findMember(memberId).getId());
                     break;
 
                 }
@@ -82,8 +84,8 @@ public class Controller {
                         System.out.println("\n<회원 로그인>\n회원번호를 입력하세요.");
                         int memberId = sc.nextInt();
                         if (isSuccessLogin(memberId)) {
-                            System.out.println("로그인 성공\n" + mm.findMember(memberId).toString());
-                            로그인(memberId);
+                            System.out.println("\n로그인 성공\n" + mm.findMember(memberId).toString());
+                            로그인(mm.findMember(memberId).getId());
                             break;
                         } else {
                             System.out.println("<로그인 실패>");
@@ -214,7 +216,9 @@ public class Controller {
                     if (bm.list.size() == 0) {
                         System.out.println("현재 책이 아무것도 없습니다.");
                     } else {
-                        bm.read();
+                        for (Book book : bm.getList()) {
+                            System.out.println(book);
+                        }
                     }
                     break;
                 }
@@ -282,8 +286,8 @@ public class Controller {
     public void 로그인(int id) {
         int option;
         while (true) {
-            System.out.println("\n<" + mm.findMember(id).getName()
-                    + "님으로 로그인 상태>\n0. 로그아웃 1. 대출 가능한 책 조회 2. 현재 대출 중인 책 조회");
+            System.out.println("\n<" + mm.list.get(id).getName()
+                    + "님으로 로그인 상태>\n0. 로그아웃 1. 대출 가능한 책 조회 2. 현재 대출 중인 책 조회 3. 대출 이력 모두 보기");
             option = sc.nextInt();
 
             switch (option) {
@@ -294,18 +298,22 @@ public class Controller {
                 // 대출 가능한 책 조회
                 case 1: {
                     System.out.println("\n<대출 가능한 책 조회>");
-                    // library.readBook();
-                    borrowBook();
+                    bm.read();
+                    borrowBook(mm.list.get(id).getId());
                     break;
                 }
                 // 현재 대출 중인 책 조회
                 case 2: {
                     System.out.println("\n<현재 회원님이 대출 중인 책>");
-                    // library.getBookList().stream()
-                    // .filter(it -> it.getCurrentOwnerId() == this.member.getId())
-                    // .forEach(id -> System.out.println(id.toString()));
+                    lm.readNowBook(id);
+                    returnBook(id);
+                    break;
+                }
+                // 대출 이력 모두 보기
+                case 3: {
+                    System.out.println("\n<대출 이력 조회>");
 
-                    returnBook();
+                    lm.readAllBook(id);
                     break;
                 }
                 default: {
@@ -319,62 +327,130 @@ public class Controller {
         }
     }
 
-    public void borrowBook() {
-//        int option;
-//        while (true) {
-//            System.out.println("\n0. 뒤로 가기 1. 책 대출하기");
-//            option = sc.nextInt();
-//
-//            switch (option) {
-//                // 뒤로 가기
-//                case 0: {
-//                    break;
-//                }
-//                // 책 대출하기
-//                case 1: {
-//                    library.borrowBook(sc, this.member.getId());
-//                    break;
-//                }
-//                default: {
-//                    System.out.println("0 또는 1로 다시 입력해주세요");
-//                    continue;
-//                }
-//            }
-//            if (option == 0) {
-//                return;
-//            }
-//        }
+    public void borrowBook(int memberId) {
+        int option;
+        while (true) {
+            System.out.println("\n0. 뒤로 가기 1. 책 대출하기");
+            option = sc.nextInt();
+
+            switch (option) {
+                // 뒤로 가기
+                case 0: {
+                    break;
+                }
+                // 책 대출하기
+                case 1: {
+                    System.out.println("\n<도서 대출>\n빌리고 싶은 책 번호를 입력해주세요");
+                    int bookId = sc.nextInt();
+
+                    // 책이 없을 때
+                    if (bm.findBook(bookId) == null) {
+                        System.out.println("\n<대출 실패, 해당하는 책이 없습니다.>");
+                        return;
+                    } else {
+                        if (bm.findBook(bookId).getCanBorrow() == false) {
+                            System.out.println("\n<대출 실패, 대출 중인 도서입니다.>");
+                            return;
+                        } else {
+                            // 대출 이력 저장
+                            lm.loanBook(new Loan(bookId, bm.findBook(bookId).getName(), memberId));
+
+                            // 책 현재 소유자 변경
+                            bm.list.get(bm.findBook(bookId).getId()).setCurrentOwnerId(memberId);
+                            // 책의 상태 변경
+                            bm.changeAvailability(bookId);
+                            System.out.println("\n<대출 완료>\n" + mm.list.get(memberId).getName()
+                                    + "님이 " + bm.findBook(bookId).getName() + "을 대출했습니다.\n"
+                                    + lm.list.get(lm.list.size() - 1).toString());
+                        }
+                    }
+
+                    break;
+                }
+                default: {
+                    System.out.println("0 또는 1로 다시 입력해주세요");
+                    continue;
+                }
+            }
+            if (option == 0) {
+                return;
+            }
+        }
     }
 
-    public void returnBook() {
-//        int option;
-//        while (true) {
-//            System.out.println("\n0. 뒤로 가기 1. 책 반납하기 2. 대출 연장하기");
-//            option = sc.nextInt();
-//
-//            switch (option) {
-//                // 뒤로 가기
-//                case 0: {
-//                    break;
-//                }
-//                // 책 반납하기
-//                case 1: {
-//                    library.returnBook(sc, member.getId());
-//                    break;
-//                }
-//                // 대출 연장하기
-//                case 2: {
-//                    library.extendBook(sc, member.getId());
-//                    break;
-//                }
-//                default: {
-//                    System.out.println("0~2 사이로 다시 입력해주세요");
-//                    continue;
-//                }
-//            }
-//            if (option == 0) {
-//                return;
-//            }
-//        }
+    public void returnBook(int memberId) {
+        int option;
+        while (true) {
+            System.out.println("\n0. 뒤로 가기 1. 책 반납하기 2. 대출 연장하기");
+            option = sc.nextInt();
+
+            switch (option) {
+                // 뒤로 가기
+                case 0: {
+                    break;
+                }
+                // 책 반납하기
+                case 1: {
+                    System.out.println("\n<도서 반납>\n반납하고 싶은 책 번호를 입력해주세요");
+
+                    int bookId = sc.nextInt();
+
+                    Book book = bm.findBook(bookId);
+                    if (book == null) {
+                        System.out.println("\n<반납 실패, 해당하는 책이 없습니다.>");
+                    } else {
+                        if (book.getCurrentOwnerId() == memberId) {
+                            book.setCanBorrow(true);
+                            book.setCurrentOwnerId(-1);
+                            lm.returnBook(lm.findLoan(bookId, memberId));
+
+                            System.out.println("\n<반납 완료>\n" + mm.list.get(memberId).getName()
+                                    + "님이 " + book.getName() + "을 반납했습니다.");
+
+                        } else {
+                            System.out.println("\n<반납 실패, 회원님이 대출 중인 도서가 아닙니다.>");
+
+                        }
+                    }
+                    break;
+                }
+                // 대출 연장하기
+                case 2: {
+                    System.out.println("\n<대출 연장>\n대출 연장하고 싶은 책 번호를 입력해주세요");
+
+                    int bookId = sc.nextInt();
+
+                    Book book = bm.findBook(bookId);
+
+                    if (book == null) {
+                        System.out.println("\n<연장 실패, 해당하는 책이 없습니다.>");
+                    } else {
+                        if (book.getCurrentOwnerId() == memberId) {
+                            Loan loan = lm.findLoan(book.getId(), memberId);
+                            if (loan.getIsExtended() == false) {
+                                lm.extendBook(loan);
+                                System.out.println("\n<연장 완료>\n" + book.getName() + "이 "
+                                        + Util.formattedDateToString(loan.getDeadLine())
+                                        + "까지 연장됐습니다.");
+                            } else {
+                                System.out.println("\n<연장 실패, 이미 연장을 한 도서입니다.>");
+                            }
+
+                        } else {
+                            System.out.println("\n<연장 실패, 회원님이 대출 중인 도서가 아닙니다.>");
+                        }
+                    }
+
+                    break;
+                }
+                default: {
+                    System.out.println("0~2 사이로 다시 입력해주세요");
+                    continue;
+                }
+            }
+            if (option == 0) {
+                return;
+            }
+        }
     }
 }
