@@ -2,7 +2,7 @@ package com.yulim.day_0323.finalProject;
 
 public interface CRUD<E> {
 
-    void create(E e);
+    int create(E e);
 
     void read();
 

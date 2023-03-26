@@ -16,8 +16,9 @@ public class BookManager implements CRUD<Book> {
     }
 
     @Override
-    public void create(Book newBook) {
+    public int create(Book newBook) {
         list.add(newBook);
+        return newBook.getId();
     }
 
     // 최근 출간 순으로 빌릴 수 있는 책만 조회

@@ -13,8 +13,9 @@ public class MemberManager implements CRUD<Member> {
 
     // 회원 가입
     @Override
-    public void create(Member newMember) {
+    public int create(Member newMember) {
         list.add(newMember);
+        return newMember.getId();
     }
 
     // id순으로 전체 조회
