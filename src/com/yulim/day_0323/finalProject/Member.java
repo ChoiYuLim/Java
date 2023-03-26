@@ -29,8 +29,8 @@ public class Member {
 
     @Override
     public String toString() {
-        return "회원번호=" + id + ", 이름=" + name + ", 성별=" + gender + ", 생년월일=" + birth + ", 전화번호="
-                + phone + ", 주소=" + address + ", 가입날짜=" + joinDate;
+        return "회원번호 : " + id + ", 이름 : " + name + ", 성별 : " + gender + ", 생년월일 : " + birth
+                + ", 전화번호 : " + phone + ", 주소 : " + address + ", 가입날짜 : " + joinDate;
     }
 
     public String getName() {

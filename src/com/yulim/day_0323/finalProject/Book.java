@@ -23,8 +23,8 @@ public class Book {
         if (this.currentOwnerId == -1) {
             currentId = "없음";
         }
-        return "책 번호=" + id + ", 책 이름=" + name + ", 저자=" + author + ", 출판년도=" + publishedDate
-                + ", 대출가능여부=" + canBorrow + ", 현재 대출 회원 id=" + currentId;
+        return "책 번호 : " + id + ", 책 이름 : " + name + ", 저자 : " + author + ", 출판년도 : " + publishedDate
+                + ", 대출가능여부 : " + canBorrow + ", 현재 대출 회원 id : " + currentId;
     }
 
     public int getCurrentOwnerId() {
