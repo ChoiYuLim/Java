@@ -1,6 +1,6 @@
 package com.yulim.day_0323.finalProject;
 
-public class MainSystem {
+public class Main {
 
 	public static void main(String[] args) {
 		// 처음 시작
@@ -11,7 +11,6 @@ public class MainSystem {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 	}
 
 }
