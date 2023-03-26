@@ -47,9 +47,9 @@ public class MemberManager implements CRUD<Member> {
 
     // id 값으로 멤버 정보 반환
     public Member findMember(int id) {
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).getId() == id) {
-                return list.get(i);
+        for (Member m : list) {
+            if (m.getId() == id) {
+                return m;
             }
         }
         return null;
