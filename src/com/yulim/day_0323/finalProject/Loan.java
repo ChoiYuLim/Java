@@ -8,23 +8,30 @@ import java.util.Date;
 
 public class Loan {
     private int bookId;
+    private String bookName;
     private int memberId;
     private Date borrowDate;
     private Date deadLine;
-    private Boolean isExtended = false;
+    private Boolean isExtended;
+    private Boolean isReturned;
 
-    public Loan(int bookId, int memberId) {
+    public Loan(int bookId, String bookName, int memberId) {
         super();
         this.bookId = bookId;
+        this.bookName = bookName;
         this.memberId = memberId;
         this.borrowDate = new Date();
         this.deadLine = Util.addDate(this.borrowDate, 14);
+        this.isExtended = false;
+        this.isReturned = null;
     }
 
     @Override
     public String toString() {
-        return "대출 이력 [bookId=" + bookId + ", memberId=" + memberId + ", borrowDate=" + borrowDate
-                + ", deadLine=" + deadLine + ", isExtended=" + isExtended + "]";
+        return "책 id : " + bookId + ", 책 이름 : " + bookName + ", 대출 일자 : "
+                + Util.formattedDateToString(borrowDate) + ", 반납 일자 : "
+                + Util.formattedDateToString(deadLine) + ", 반납 여부 : " + isReturned + ", 연장 여부 : "
+                + isExtended;
     }
 
     public int getBookId() {
@@ -66,5 +73,15 @@ public class Loan {
     public void setIsExtended(Boolean isExtended) {
         this.isExtended = isExtended;
     }
+
+    public Boolean getIsReturned() {
+        return isReturned;
+    }
+
+    public void setIsReturned(Boolean isReturned) {
+        this.isReturned = isReturned;
+    }
+
+
 
 }
