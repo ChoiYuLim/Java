@@ -9,14 +9,6 @@ public class Book {
     private boolean canBorrow = true;
     private int currentOwnerId = -1;
 
-    public int getCurrentOwnerId() {
-        return currentOwnerId;
-    }
-
-    public void setCurrentOwnerId(int currentOwnerId) {
-        this.currentOwnerId = currentOwnerId;
-    }
-
     public Book(String name, String publishedDate, String author) {
         this.name = name;
         this.publishedDate = publishedDate;
@@ -29,6 +21,14 @@ public class Book {
     public String toString() {
         return "책 번호=" + id + ", 책 이름=" + name + ", 저자=" + author + ", 출판년도=" + publishedDate
                 + ", 대출가능여부=" + canBorrow;
+    }
+
+    public int getCurrentOwnerId() {
+        return currentOwnerId;
+    }
+
+    public void setCurrentOwnerId(int currentOwnerId) {
+        this.currentOwnerId = currentOwnerId;
     }
 
     public String getName() {
