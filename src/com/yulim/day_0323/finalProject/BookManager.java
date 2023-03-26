@@ -10,9 +10,19 @@ public class BookManager implements CRUD<Book> {
         return list;
     }
 
-    // 책 빌릴 수 있는지 없는지 변경
-    public void changeAvailability() {
+    // Id값으로 책 반환
+    public Book findBook(int id) {
+        for (Book book : list) {
+            if (book.getId() == id) {
+                return book;
+            }
+        }
+        return null;
+    }
 
+    // 책 빌릴 수 있는지 없는지 변경
+    public void changeAvailability(int id) {
+        list.get(id).setCanBorrow(!list.get(id).getCanBorrow());
     }
 
     @Override
