@@ -21,7 +21,7 @@ public class Util {
     // 2013/10/20 형태로 출력하게
     public static String formattedDateToString(Date day) {
 
-        SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
+        SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
         return format.format(day);
     }
 

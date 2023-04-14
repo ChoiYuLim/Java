@@ -1,4 +1,4 @@
-package com.yulim.day_0323.finalProject;
+package com.yulim.day_0323.finalProject.entity;
 
 public class Book {
     private static int count = 0;
@@ -9,13 +9,21 @@ public class Book {
     private boolean canBorrow = true;
     private int currentOwnerId = -1;
 
-    public Book(String name, String publishedDate, String author) {
-        this.name = name;
-        this.publishedDate = publishedDate;
-        this.author = author;
+    public Book(String name, String author, String publishedDate, boolean canBorrow,
+            int currentOwnerId) {
         this.id = count;
         count++;
+        this.name = name;
+        this.author = author;
+        this.publishedDate = publishedDate;
+        this.canBorrow = canBorrow;
+        this.currentOwnerId = currentOwnerId;
     }
+    
+    public Book(String name, String publishedDate, String author) {
+        this(name, author, publishedDate, true, -1);
+    }
+    
 
     @Override
     public String toString() {
@@ -23,8 +31,8 @@ public class Book {
         if (this.currentOwnerId == -1) {
             currentId = "없음";
         }
-        return "책 번호 : " + id + ", 책 이름 : " + name + ", 저자 : " + author + ", 출판년도 : " + publishedDate
-                + ", 대출가능여부 : " + canBorrow + ", 현재 대출 회원 id : " + currentId;
+        return "책 번호 : " + id + ", 책 이름 : " + name + ", 저자 : " + author + ", 출판년도 : "
+                + publishedDate + ", 대출가능여부 : " + canBorrow + ", 현재 대출 회원 id : " + currentId;
     }
 
     public int getCurrentOwnerId() {

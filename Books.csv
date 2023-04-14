@@ -1,0 +1,2 @@
+id,name,author,publishedDate,canBorrow,currentOwnerId
+0,책1,지은이1,19981223,true,-1

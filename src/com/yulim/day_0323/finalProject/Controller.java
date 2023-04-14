@@ -1,7 +1,13 @@
 package com.yulim.day_0323.finalProject;
 
-import java.util.ArrayList;
 import java.util.Scanner;
+import com.yulim.day_0323.finalProject.csv.ExportList;
+import com.yulim.day_0323.finalProject.domain.BookManager;
+import com.yulim.day_0323.finalProject.domain.LoanManager;
+import com.yulim.day_0323.finalProject.domain.MemberManager;
+import com.yulim.day_0323.finalProject.entity.Book;
+import com.yulim.day_0323.finalProject.entity.Loan;
+import com.yulim.day_0323.finalProject.entity.Member;
 
 public class Controller {
 
@@ -12,12 +18,6 @@ public class Controller {
     Scanner sc = new Scanner(System.in);
 
     public void run() throws Exception {
-
-        bm.list.add(new Book("오만과 편견", "1813", "제인 오스틴"));
-        bm.list.add(new Book("설국", "1931", "한강"));
-        bm.list.add(new Book("데미안", "1919", "헤르만 헤세"));
-        mm.list.add(new Member("최유림", "하안동", "19981223", "여성", "01020271810"));
-        mm.list.add(new Member("김현아", "서울특별시", "20020623", "여성", "01028495810"));
 
         int firstOption;
         while (true) {
@@ -71,7 +71,8 @@ public class Controller {
                     System.out.println("연락처를 입력해주세요.");
                     String phone = sc.next();
 
-                    int memberId = mm.create(new Member(name, address, birth, gender, phone));
+                    int memberId = mm.create(
+                            new Member(name, gender, birth, address, phone, Util.getToday()));
                     System.out.println("\n<회원가입 완료>\n로그인 시 회원번호 " + memberId + "으로 입력해주세요.");
 
                     로그인(mm.findMember(memberId).getId());
@@ -100,6 +101,11 @@ public class Controller {
                 }
             }
             if (firstOption == 0) {
+                // 프로그램 종료시, 바뀐 데이터를 저장하고 마무리한다.
+                ExportList el = new ExportList();
+                el.exportBook(bm.getList());
+                el.exportMember(mm.getList());
+                el.exportLoan(lm.getList());
                 System.out.println("프로그램을 종료합니다.");
                 return;
             }
@@ -141,7 +147,8 @@ public class Controller {
                             String address = sc.next();
                             System.out.println("연락처를 수정해주세요.");
                             String phone = sc.next();
-                            mm.update(id, new Member(name, address, birth, gender, phone));
+                            mm.update(id, new Member(name, address, birth, gender, phone,
+                                    mm.getList().get(id).getJoinDate()));
 
                         } catch (Exception e) {
                             System.out.println("<회원 수정 실패>");

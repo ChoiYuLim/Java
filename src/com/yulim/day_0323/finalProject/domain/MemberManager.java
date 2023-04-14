@@ -1,11 +1,13 @@
-package com.yulim.day_0323.finalProject;
+package com.yulim.day_0323.finalProject.domain;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import com.yulim.day_0323.finalProject.CRUD;
+import com.yulim.day_0323.finalProject.entity.Member;
 
 public class MemberManager implements CRUD<Member> {
 
-    ArrayList<Member> list = new ArrayList<>();
+    public ArrayList<Member> list = ml.memberList();
 
     public ArrayList<Member> getList() {
         return list;

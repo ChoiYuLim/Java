@@ -1,9 +1,12 @@
-package com.yulim.day_0323.finalProject;
+package com.yulim.day_0323.finalProject.domain;
 
 import java.util.ArrayList;
+import com.yulim.day_0323.finalProject.CRUD;
+import com.yulim.day_0323.finalProject.entity.Book;
 
 public class BookManager implements CRUD<Book> {
-    ArrayList<Book> list = new ArrayList<>();
+
+    public ArrayList<Book> list = ml.bookList();
 
     // 모든 책 리스트 가져오기
     public ArrayList<Book> getList() {

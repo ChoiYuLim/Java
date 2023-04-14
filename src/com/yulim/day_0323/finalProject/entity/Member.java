@@ -1,8 +1,4 @@
-package com.yulim.day_0323.finalProject;
-
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Scanner;
+package com.yulim.day_0323.finalProject.entity;
 
 public class Member {
 
@@ -16,16 +12,18 @@ public class Member {
     private String phone;
 
     // 회원 가입
-    public Member(String name, String address, String birth, String gender, String phone) {
+    public Member(String name, String gender, String birth, String address, String phone,
+            String joinDate) {
         this.name = name;
         this.address = address;
         this.birth = birth;
         this.gender = gender;
         this.phone = phone;
-        this.joinDate = Util.getToday();
+        this.joinDate = joinDate;
         this.id = count;
         count++;
     }
+
 
     @Override
     public String toString() {
