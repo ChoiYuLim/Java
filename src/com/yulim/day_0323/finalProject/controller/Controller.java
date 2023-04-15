@@ -168,8 +168,7 @@ public class Controller {
 
                         int id = sc.nextInt();
                         try {
-                            mm.list.indexOf(id);
-                            mm.list.remove(id);
+                            mm.delete(id);
                             System.out.println("<삭제 완료>");
                         } catch (Exception e) {
                             System.out.println("<삭제 실패>");
@@ -294,7 +293,7 @@ public class Controller {
     public void 로그인(int id) {
         int option;
         while (true) {
-            System.out.println("\n<" + mm.list.get(id).getName()
+            System.out.println("\n<" + mm.findMember(id).getName()
                     + "님으로 로그인 상태>\n0. 로그아웃 1. 대출 가능한 책 조회 2. 현재 대출 중인 책 조회 3. 대출 이력 모두 보기");
             option = sc.nextInt();
 

@@ -38,7 +38,7 @@ public class MemberManager implements CRUD<Member> {
     // 회원 삭제
     @Override
     public void delete(int id) {
-        list.remove(id);
+        list.remove(findMember(id).getId());
     }
 
     // 삭제 취소
