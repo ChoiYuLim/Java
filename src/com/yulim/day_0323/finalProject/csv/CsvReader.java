@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class CsvReader {
-    
+
     public ArrayList<List<String>> readCSV(String filename) {
         // 반환용 리스트
         ArrayList<List<String>> ret = new ArrayList<List<String>>();

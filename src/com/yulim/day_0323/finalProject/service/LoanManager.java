@@ -7,7 +7,7 @@ import com.yulim.day_0323.finalProject.entity.Loan;
 import com.yulim.day_0323.finalProject.util.DateUtil;
 
 public class LoanManager {
-    
+
     MakeList ml = new MakeList();
     public ArrayList<Loan> list = ml.loanList();
 

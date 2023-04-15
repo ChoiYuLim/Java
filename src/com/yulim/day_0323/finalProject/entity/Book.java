@@ -19,11 +19,11 @@ public class Book {
         this.canBorrow = canBorrow;
         this.currentOwnerId = currentOwnerId;
     }
-    
+
     public Book(String name, String publishedDate, String author) {
         this(name, author, publishedDate, true, -1);
     }
-    
+
 
     @Override
     public String toString() {

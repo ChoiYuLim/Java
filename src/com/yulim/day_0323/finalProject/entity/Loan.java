@@ -38,8 +38,8 @@ public class Loan {
     public String toString() {
         return "책 id : " + bookId + ", 책 이름 : " + bookName + ", 대출 일자 : "
                 + DateUtil.formattedDateToString(borrowDate) + ", 반납 일자 : "
-                + DateUtil.formattedDateToString(deadLine) + ", 반납 여부 : " + isReturned + ", 연장 여부 : "
-                + isExtended;
+                + DateUtil.formattedDateToString(deadLine) + ", 반납 여부 : " + isReturned
+                + ", 연장 여부 : " + isExtended;
     }
 
     public int getBookId() {

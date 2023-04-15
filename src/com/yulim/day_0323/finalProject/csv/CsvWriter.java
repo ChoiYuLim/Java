@@ -15,8 +15,8 @@ public class CsvWriter {
         File csv = new File(fileName);
         BufferedWriter bw = null;
         try {
-            bw = new BufferedWriter(
-                    new OutputStreamWriter(new FileOutputStream(csv, false),  Charset.forName("UTF-8")));
+            bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(csv, false),
+                    Charset.forName("UTF-8")));
             for (int i = 0; i < dataList.size(); i++) {
                 String[] data = dataList.get(i);
                 String aData = "";

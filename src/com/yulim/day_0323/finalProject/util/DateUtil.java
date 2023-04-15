@@ -10,7 +10,7 @@ public class DateUtil {
         // 오늘 날짜 정보를 가져옴
         return new SimpleDateFormat("yyyyMMdd").format(new Date());
     }
-    
+
     // 20131020 형태로 출력하게
     public static String formattedDateToString(Date day) {
 
