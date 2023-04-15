@@ -1,7 +1,6 @@
-package com.yulim.day_0323.finalProject.domain;
+package com.yulim.day_0323.finalProject.service;
 
 import java.util.ArrayList;
-import com.yulim.day_0323.finalProject.CRUD;
 import com.yulim.day_0323.finalProject.entity.Book;
 
 public class BookManager implements CRUD<Book> {

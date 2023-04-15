@@ -1,7 +1,7 @@
 package com.yulim.day_0323.finalProject.entity;
 
 import java.util.Date;
-import com.yulim.day_0323.finalProject.DateUtil;
+import com.yulim.day_0323.finalProject.util.DateUtil;
 
 /**
  * 대출 클래스: 회원 id, 책 id, 대출 날짜, 반납 날짜, 연장 여부

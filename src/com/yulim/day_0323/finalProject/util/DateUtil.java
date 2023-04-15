@@ -1,4 +1,4 @@
-package com.yulim.day_0323.finalProject;
+package com.yulim.day_0323.finalProject.util;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
