@@ -2,7 +2,7 @@ package com.yulim.day_0323.finalProject.csv;
 
 import java.util.ArrayList;
 import java.util.List;
-import com.yulim.day_0323.finalProject.Util;
+import com.yulim.day_0323.finalProject.DateUtil;
 import com.yulim.day_0323.finalProject.entity.Book;
 import com.yulim.day_0323.finalProject.entity.Loan;
 import com.yulim.day_0323.finalProject.entity.Member;
@@ -57,8 +57,8 @@ public class ExportList {
             loan[0] = String.valueOf(loanlist.get(i).getBookId());
             loan[1] = loanlist.get(i).getBookName();
             loan[2] = String.valueOf(loanlist.get(i).getMemberId());
-            loan[3] = Util.formattedDateToString(loanlist.get(i).getBorrowDate());
-            loan[4] = Util.formattedDateToString(loanlist.get(i).getDeadLine());
+            loan[3] = DateUtil.formattedDateToString(loanlist.get(i).getBorrowDate());
+            loan[4] = DateUtil.formattedDateToString(loanlist.get(i).getDeadLine());
             loan[5] = String.valueOf(loanlist.get(i).getIsExtended());
             loan[6] = String.valueOf(loanlist.get(i).getIsReturned());
             export.add(loan);

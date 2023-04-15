@@ -2,7 +2,7 @@ package com.yulim.day_0323.finalProject.domain;
 
 import java.util.ArrayList;
 import java.util.stream.Collectors;
-import com.yulim.day_0323.finalProject.Util;
+import com.yulim.day_0323.finalProject.DateUtil;
 import com.yulim.day_0323.finalProject.csv.MakeList;
 import com.yulim.day_0323.finalProject.entity.Loan;
 
@@ -56,6 +56,6 @@ public class LoanManager {
     // 반납 연기
     public void extendBook(Loan loan) {
         loan.setIsExtended(true);
-        loan.setDeadLine(Util.addDate(loan.getDeadLine(), 7));
+        loan.setDeadLine(DateUtil.addDate(loan.getDeadLine(), 7));
     }
 }

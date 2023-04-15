@@ -72,7 +72,7 @@ public class Controller {
                     String phone = sc.next();
 
                     int memberId = mm.create(
-                            new Member(name, gender, birth, address, phone, Util.getToday()));
+                            new Member(name, gender, birth, address, phone, DateUtil.getToday()));
                     System.out.println("\n<회원가입 완료>\n로그인 시 회원번호 " + memberId + "으로 입력해주세요.");
 
                     로그인(mm.findMember(memberId).getId());
@@ -437,7 +437,7 @@ public class Controller {
                             if (loan.getIsExtended() == false) {
                                 lm.extendBook(loan);
                                 System.out.println("\n<연장 완료>\n" + book.getName() + "이 "
-                                        + Util.formattedDateToString(loan.getDeadLine())
+                                        + DateUtil.formattedDateToString(loan.getDeadLine())
                                         + "까지 연장됐습니다.");
                             } else {
                                 System.out.println("\n<연장 실패, 이미 연장을 한 도서입니다.>");
