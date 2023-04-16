@@ -169,7 +169,6 @@ public class Controller {
                         int id = sc.nextInt();
                         try {
                             mm.delete(id);
-                            System.out.println("<삭제 완료>");
                         } catch (Exception e) {
                             System.out.println("<삭제 실패>");
                         }
